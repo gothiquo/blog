@@ -59,4 +59,30 @@ export class PostService {
     this.savePosts();
     this.emitPosts();
   }
+
+  addLike(id: number) {
+    this.posts[+ id].likes++;
+    this.savePosts();
+    this.emitPosts();
+  }
+
+  addDislike(id: number) {
+    this.posts[+ id].likes--;
+    this.savePosts();
+    this.emitPosts();
+  }
+
+  resetAllLikes() {
+    for (let i = 0; i < this.posts.length; i++) {
+      this.posts[i].likes = 0;
+    }
+    this.savePosts();
+    this.emitPosts();
+  }
+
+  resetPostLikes(id: number) {
+    this.posts[+ id].likes = 0;
+    this.savePosts();
+    this.emitPosts();
+  }
 }

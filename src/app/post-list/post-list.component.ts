@@ -42,6 +42,22 @@ export class PostListComponent implements OnInit,OnDestroy {
     this.router.navigate(['posts', 'view', id]);
   }
 
+  onAddLike(id: number) {
+    this.postService.addLike(id);
+  }
+
+  onAddDislike(id: number) {
+    this.postService.addDislike(id);
+  }
+
+  onResetAllLikes() {
+    this.postService.resetAllLikes();
+  }
+
+  onResetPostlikes(id: number) {
+    this.postService.resetPostLikes(id);
+  }
+
   ngOnDestroy() {
     this.postsSubscription.unsubscribe();
   }

@@ -1,25 +1,21 @@
 <div class="row">
   <div class="col-xs-12">
     <button class="btn btn-primary" (click)="onNewPost()">New Post</button>
+    <button class="btn btn-info" (click)="onResetAllLikes()">Reset All Likes</button>
     <h2>Posts</h2>
     <div class="list-group">
-      <li class="list-group-item"
+      <li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': post.likes > 0,
+                'list-group-item-danger': post.likes < 0}"
         *ngFor="let post of posts; let i = index">
-        <div class="col-xs-12">
-          <div class="col-xs-6">
-            <h3 class="pull-left"
-                style="cursor: pointer; margin-left: -30px; margin-top: 0px;"
-                (click)="onViewPost(i)">
-              {{ post.title }}
-            </h3>
-          </div>
-          <div class="col-xs-6">
-            <button class="btn btn-danger pull-right" (click)="onDeletePost(post)">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-          </div>
-        </div>
+        <h3 (click)="onViewPost(i)">
+          {{ post.title }}
+        </h3>
         <p class="list-group-item-text">{{ post.content }}</p>
+        <button class="btn btn-success" (click)="onAddLike(i)"><i class="glyphicon glyphicon-thumbs-up"></i></button>
+        <button class="btn btn-warning" (click)="onAddDislike(i)"><i class="glyphicon glyphicon-thumbs-down"></i></button>
+        <button class="btn btn-default" (click)="onResetPostlikes(i)">Reset Likes</button>
+        <button class="btn btn-danger pull-right" (click)="onDeletePost(post)"><i class="glyphicon glyphicon-trash"></i></button>
       </li>
     </div>
   </div>
