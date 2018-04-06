@@ -22,6 +22,7 @@ export class PostService {
     firebase.database().ref('/posts')
       .on('value', (data: DataSnapshot) => {
         this.posts = data.val() ? data.val() : [];
+        this.emitPosts();
       });
   }
 
