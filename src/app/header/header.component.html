@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">Blog</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="home">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="posts">Posts</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signup">Sign up</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signin">Sign in</a>
+      </li>
+      <a (click)="onSignOut()"
+         style="cursor:pointer"
+         *ngIf="isAuth">Logout</a>
+    </ul>
+  </div>
+</nav>
